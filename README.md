@@ -39,3 +39,11 @@ npm run dev
 
 mock的json用户名和密码分别为aaa,如下所示：
 
+![](https://raw.githubusercontent.com/Neilai/jwt-login/master/img/1.png)
+
+登录后如下所示：
+
+![](https://raw.githubusercontent.com/Neilai/jwt-login/master/img/2.png)
+
+
+
