@@ -1,12 +1,11 @@
 <template>
 <div>
   <form>
-    用户名 :<br>
-    <input type="text" name="username" v-model="name">
-    <br>
-    密码 :<br>
-    <input type="text" name="password" v-model="pwd"><br>
-    <input type="button" @click.enter="Login" value="登陆">
+    <span style="background-color:skyblue;padding:2px">用户名 :</span><br/>
+    <input type="text" name="username" v-model="name" style="margin:5px 0;"><br>
+    <span style="background-color:skyblue;padding:2px">密码 :</span><br/>
+    <input type="text" name="password" v-model="pwd" style="margin:5px 0;"><br/>
+    <input type="button"  @click.enter="Login" value="登陆" style="background-color:skyblue;margin-top: 5px;padding: 0 5px">
   </form>
 </div>
 </template>
