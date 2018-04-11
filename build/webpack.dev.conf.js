@@ -16,7 +16,7 @@ const appData = require('../data.json')
 const apiRouter = express.Router()
 app.use('/api',apiRouter)
 
-const users=appData.users
+const user=appData.user
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -30,9 +30,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // these devServer options should be customized in /config/index.js
   devServer: {
     before(app) {
-      app.get('/api/name/aaa/password/aaa', function(req, res) {
+      app.get('/api/login/name/aaa/password/aaa', function(req, res) {
         res.json({
-          data: users[0]
+          data: user
         })
       });
     },

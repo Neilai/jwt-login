@@ -27,14 +27,23 @@
     },
     methods:{
       Login:function() {
-          console.log(this.name,this.pwd);
+        console.log(this.$store);
         this.$axios.get('/api/login/name/'+this.name+'/password/'+this.pwd).then((response) => {
-            console.log(response)
+            console.log(response.data.data.token);
+            if(response.data) {
+                console.log(response.data.data.token);
+            this.$store.commit('Login', {"user":response.data.data.username,"token":response.data.data.token});
+            this.$router.push({path: 'main'})
+          }
        }).catch(e=>{
             console.log(e);
         })
       }
     },
+    created(){
+        if(this.$store.state.token)
+          this.$router.push({path: 'main'});
+    }
   }
 
 </script>

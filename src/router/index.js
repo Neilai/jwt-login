@@ -2,6 +2,7 @@ import main from '../components/main'
 import login from '../components/login'
 import Router from  'vue-router'
 import Vue from 'vue'
+import store from '../store'
 Vue.use(Router)
 
 const router = new Router({
