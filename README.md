@@ -1,21 +1,41 @@
-# jwt-login
+# jwt登陆认证模板
 
-> A Vue.js project
+###原理
 
-## Build Setup
+登陆之后，会在本地的localstorage保存token，以后每次请求都会带上这个token。在这里我们使用vuex存储状态，一旦请求成功保存token，如下所示：
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+```javascript
+Login (state,payload) {
+    state.user=payload["user"]
+    state.token=payload["token"]
+    console.log("!!!",state.token);
+    window.sessionStorage.setItem('token',state.token);
+    window.sessionStorage.setItem('user', state.user);
+  }
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+每次请求，使用axios添加请求头
+
+```javascript
+instance.interceptors.request.use(
+  config => {
+    if(store.state.token){
+      config.headers.Authorization = store.state.token;
+    }
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  }
+);
+```
+
+### 使用
+
+```
+npm install
+npm run dev
+```
+
+mock的json用户名和密码分别为aaa,如下所示：
+
